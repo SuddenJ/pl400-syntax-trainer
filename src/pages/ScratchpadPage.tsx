@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { CodeBlock } from '../components/CodeBlock'
+import { SyntaxAutocompleteInput } from '../components/SyntaxAutocompleteInput'
 import { Card, PageHeader, PrimaryButton, SecondaryButton } from '../components/ui'
 import { questions } from '../data/questions'
 import { useStudy } from '../hooks/useStudyStore'
@@ -101,17 +102,16 @@ export function ScratchpadPage() {
       <label htmlFor="scratch" className="sr-only">
         Scratchpad editor
       </label>
-      <textarea
-        id="scratch"
-        value={code}
-        onChange={(e) => setCode(e.target.value)}
-        rows={10}
-        spellCheck={false}
-        autoCapitalize="off"
-        autoCorrect="off"
-        className="mb-2 w-full rounded-xl border border-slate-300 bg-white p-3 font-mono text-base leading-relaxed text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-        placeholder="Write the syntax here…"
-      />
+      <div className="mb-2">
+        <SyntaxAutocompleteInput
+          id="scratch"
+          value={code}
+          onChange={setCode}
+          rows={10}
+          placeholder="Write the syntax here…"
+          aria-label="Scratchpad editor"
+        />
+      </div>
 
       <div className="mb-3 flex flex-wrap gap-1">
         {INSERTS.map((ch) => (

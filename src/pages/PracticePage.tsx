@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { AnswerCard } from '../components/AnswerCard'
+import { SyntaxAutocompleteInput } from '../components/SyntaxAutocompleteInput'
 import { Card, PageHeader, PrimaryButton, SecondaryButton } from '../components/ui'
 import { ProgressBar } from '../components/ProgressBar'
 import { questions } from '../data/questions'
@@ -29,7 +30,6 @@ export function PracticePage() {
     abandon,
   } = useStudySession(questions)
   const { settings } = useStudy()
-  const inputRef = useRef<HTMLTextAreaElement>(null)
   const startedFromQuery = useRef(false)
 
   useEffect(() => {
@@ -183,17 +183,13 @@ export function PracticePage() {
               <label htmlFor="answer" className="sr-only">
                 Your answer
               </label>
-              <textarea
+              <SyntaxAutocompleteInput
                 id="answer"
-                ref={inputRef}
                 value={draftAnswer}
-                onChange={(e) => setDraftAnswer(e.target.value)}
+                onChange={setDraftAnswer}
                 rows={4}
-                spellCheck={false}
-                autoCapitalize="off"
-                autoCorrect="off"
-                className="w-full rounded-xl border border-slate-300 bg-white p-3 font-mono text-base leading-relaxed text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                 placeholder="Type the syntax…"
+                aria-label="Your answer"
               />
               <div className="grid grid-cols-2 gap-2">
                 <PrimaryButton onClick={submitTyped}>Check</PrimaryButton>
