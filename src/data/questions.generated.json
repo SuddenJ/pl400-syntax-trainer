@@ -1,0 +1,3311 @@
+{
+  "generatedAt": "2026-08-29T21:34:36.228Z",
+  "source": "PL400_PowerFx_Dataverse_Syntax_Practice_Bank.md",
+  "count": 260,
+  "questions": [
+    {
+      "id": "PFX-CORE-001",
+      "category": "Power Fx — Core syntax",
+      "topic": "Control properties",
+      "origin": "DOC",
+      "prompt": "You have a dropdown that must display only active Dataverse absence types using `Filter('Absence Types', 'Absence Types (Views)'.'Active Absence Types')`. Which control property should contain the formula?",
+      "answer": "Items",
+      "explanation": "`Items` defines the table shown by list controls; `OnSelect` is a behavior formula.",
+      "acceptedAnswers": [
+        "Items",
+        "Items()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-002",
+      "category": "Power Fx — Core syntax",
+      "topic": "Filter",
+      "origin": "GAP",
+      "prompt": "Write a Power Fx formula that returns only active Accounts where `Status = \"Active\"`.",
+      "answer": "Filter(Accounts, Status = \"Active\")",
+      "explanation": "`Filter` returns a table of all matching records.",
+      "acceptedAnswers": [
+        "Filter(Accounts, Status = \"Active\")"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-003",
+      "category": "Power Fx — Core syntax",
+      "topic": "Filter",
+      "origin": "GAP",
+      "prompt": "Write a `Filter` that returns Orders where `Total > 1000` and `Status = \"Open\"`.",
+      "answer": "Filter(Orders, Total > 1000 && Status = \"Open\")",
+      "explanation": "Multiple conditions can be combined with `&&` / `And`.",
+      "acceptedAnswers": [
+        "Filter(Orders, Total > 1000 && Status = \"Open\")"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-004",
+      "category": "Power Fx — Core syntax",
+      "topic": "LookUp",
+      "origin": "GAP",
+      "prompt": "Write a formula that returns the first Account whose `AccountNumber` equals `\"A100\"`.",
+      "answer": "LookUp(Accounts, AccountNumber = \"A100\")",
+      "explanation": "`LookUp` returns one record; `Filter` returns a table.",
+      "acceptedAnswers": [
+        "LookUp(Accounts, AccountNumber = \"A100\")"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-005",
+      "category": "Power Fx — Core syntax",
+      "topic": "LookUp reduction",
+      "origin": "GAP",
+      "prompt": "Return only the `Name` value from the first Account whose `AccountNumber` is `\"A100\"`.",
+      "answer": "LookUp(Accounts, AccountNumber = \"A100\", Name)",
+      "explanation": "The optional third argument reduces the matching record to a value.",
+      "acceptedAnswers": [
+        "LookUp(Accounts, AccountNumber = \"A100\", Name)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-006",
+      "category": "Power Fx — Core syntax",
+      "topic": "Search",
+      "origin": "GAP",
+      "prompt": "Search Accounts for the text in `txtSearch.Text` across the `Name` column.",
+      "answer": "Search(Accounts, txtSearch.Text, Name)",
+      "explanation": "`Search` finds text within one or more text columns; delegation support depends on the host/data source.",
+      "acceptedAnswers": [
+        "Search(Accounts, txtSearch.Text, Name)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-007",
+      "category": "Power Fx — Core syntax",
+      "topic": "Sort",
+      "origin": "GAP",
+      "prompt": "Sort Accounts by the `Name` formula in ascending order.",
+      "answer": "Sort(Accounts, Name, SortOrder.Ascending)",
+      "explanation": "`Sort` accepts a formula as its sort key.",
+      "acceptedAnswers": [
+        "Sort(Accounts, Name, SortOrder.Ascending)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-008",
+      "category": "Power Fx — Core syntax",
+      "topic": "SortByColumns",
+      "origin": "GAP",
+      "prompt": "Sort Accounts by the `name` column descending.",
+      "answer": "SortByColumns(Accounts, \"name\", SortOrder.Descending)",
+      "explanation": "`SortByColumns` identifies columns by name.",
+      "acceptedAnswers": [
+        "SortByColumns(Accounts, \"name\", SortOrder.Descending)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-009",
+      "category": "Power Fx — Core syntax",
+      "topic": "First",
+      "origin": "GAP",
+      "prompt": "Return the first row from `Accounts`.",
+      "answer": "First(Accounts)",
+      "acceptedAnswers": [
+        "First(Accounts)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-010",
+      "category": "Power Fx — Core syntax",
+      "topic": "FirstN",
+      "origin": "GAP",
+      "prompt": "Return the first 10 rows from `Accounts`.",
+      "answer": "FirstN(Accounts, 10)",
+      "explanation": "Be aware of delegation limits for large remote data sources.",
+      "acceptedAnswers": [
+        "FirstN(Accounts, 10)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-011",
+      "category": "Power Fx — Core syntax",
+      "topic": "Last",
+      "origin": "GAP",
+      "prompt": "Return the last row from a local collection named `colOrders`.",
+      "answer": "Last(colOrders)",
+      "acceptedAnswers": [
+        "Last(colOrders)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-012",
+      "category": "Power Fx — Core syntax",
+      "topic": "LastN",
+      "origin": "GAP",
+      "prompt": "Return the last five rows from `colOrders`.",
+      "answer": "LastN(colOrders, 5)",
+      "acceptedAnswers": [
+        "LastN(colOrders, 5)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-013",
+      "category": "Power Fx — Core syntax",
+      "topic": "CountRows",
+      "origin": "GAP",
+      "prompt": "Return the number of records in `colOrders`.",
+      "answer": "CountRows(colOrders)",
+      "acceptedAnswers": [
+        "CountRows(colOrders)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-014",
+      "category": "Power Fx — Core syntax",
+      "topic": "Distinct",
+      "origin": "GAP",
+      "prompt": "Return a one-column table of unique `City` values from Accounts.",
+      "answer": "Distinct(Accounts, City)",
+      "explanation": "`Distinct` can be nondelegable depending on data source/context.",
+      "acceptedAnswers": [
+        "Distinct(Accounts, City)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-015",
+      "category": "Power Fx — Core syntax",
+      "topic": "Choices",
+      "origin": "DOC",
+      "prompt": "Populate a combo box with possible values for the `Primary Contact` lookup on Accounts.",
+      "answer": "Choices(Accounts.'Primary Contact')",
+      "explanation": "`Choices` is convenient for Choice/Lookup metadata-backed values but can be unsuitable for very large lookup lists.",
+      "acceptedAnswers": [
+        "Choices(Accounts.'Primary Contact')"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-016",
+      "category": "Power Fx — Core syntax",
+      "topic": "Patch update",
+      "origin": "DOC",
+      "prompt": "Update the selected Order's `Status` to `\"Closed\"`, locating the row by `OrderId = 42`.",
+      "answer": "Patch(Orders, LookUp(Orders, OrderId = 42), { Status: \"Closed\" })",
+      "explanation": "The second argument identifies the existing base record.",
+      "acceptedAnswers": [
+        "Patch(Orders, LookUp(Orders, OrderId = 42), { Status: \"Closed\" })"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-017",
+      "category": "Power Fx — Core syntax",
+      "topic": "Patch create",
+      "origin": "DOC",
+      "prompt": "Create a new Inventory row with `ProductName = \"Camera\"`.",
+      "answer": "Patch(Inventory, Defaults(Inventory), { ProductName: \"Camera\" })",
+      "explanation": "`Defaults(DataSource)` is the common canvas-app pattern for creating a new record.",
+      "acceptedAnswers": [
+        "Patch(Inventory, Defaults(Inventory), { ProductName: \"Camera\" })"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-018",
+      "category": "Power Fx — Core syntax",
+      "topic": "Patch multiple fields",
+      "origin": "GAP",
+      "prompt": "Update the selected Account's Name and Credit Limit.",
+      "answer": "Patch(Accounts, Gallery1.Selected, { Name: txtName.Text, 'Credit Limit': Value(txtLimit.Text) })",
+      "acceptedAnswers": [
+        "Patch(Accounts, Gallery1.Selected, { Name: txtName.Text, 'Credit Limit': Value(txtLimit.Text) })"
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PFX-CORE-019",
+      "category": "Power Fx — Core syntax",
+      "topic": "With + Patch",
+      "origin": "GAP",
+      "prompt": "Create an Order and then use the returned record's ID in a second expression without a global variable.",
+      "answer": "With({ newOrder: Patch(Orders, Defaults(Orders), { Name: \"New\" }) }, newOrder.OrderId)",
+      "explanation": "`With` can hold a returned record as a local named value.",
+      "acceptedAnswers": [
+        "With({ newOrder: Patch(Orders, Defaults(Orders), { Name: \"New\" }) }, newOrder.OrderId)"
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PFX-CORE-020",
+      "category": "Power Fx — Core syntax",
+      "topic": "Collect",
+      "origin": "GAP",
+      "prompt": "Append a record to collection `colCart`.",
+      "answer": "Collect(colCart, { ProductId: 1, Quantity: 2 })",
+      "explanation": "`Collect` adds; it does not clear existing rows.",
+      "acceptedAnswers": [
+        "Collect(colCart, { ProductId: 1, Quantity: 2 })"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-021",
+      "category": "Power Fx — Core syntax",
+      "topic": "Clear",
+      "origin": "GAP",
+      "prompt": "Remove all rows from the local collection `colCart`.",
+      "answer": "Clear(colCart)",
+      "explanation": "`Clear` removes rows from a collection but keeps its columns.",
+      "acceptedAnswers": [
+        "Clear(colCart)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-022",
+      "category": "Power Fx — Core syntax",
+      "topic": "ClearCollect",
+      "origin": "DOC",
+      "prompt": "Replace all rows in `colAccounts` with the result of `Filter(Accounts, Status = \"Active\")`.",
+      "answer": "ClearCollect(colAccounts, Filter(Accounts, Status = \"Active\"))",
+      "explanation": "This is a clear-then-collect pattern.",
+      "acceptedAnswers": [
+        "ClearCollect(colAccounts, Filter(Accounts, Status = \"Active\"))"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-023",
+      "category": "Power Fx — Core syntax",
+      "topic": "Remove",
+      "origin": "DOC",
+      "prompt": "Delete the selected record from a data source.",
+      "answer": "Remove(Accounts, Gallery1.Selected)",
+      "explanation": "Use `Remove` when you already have the specific record.",
+      "acceptedAnswers": [
+        "Remove(Accounts, Gallery1.Selected)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-024",
+      "category": "Power Fx — Core syntax",
+      "topic": "RemoveIf",
+      "origin": "GAP",
+      "prompt": "Delete all local collection rows whose `Quantity = 0`.",
+      "answer": "RemoveIf(colCart, Quantity = 0)",
+      "explanation": "`RemoveIf` evaluates a predicate for rows.",
+      "acceptedAnswers": [
+        "RemoveIf(colCart, Quantity = 0)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-025",
+      "category": "Power Fx — Core syntax",
+      "topic": "Update",
+      "origin": "GAP",
+      "prompt": "Replace a matching record in a local collection with a supplied record.",
+      "answer": "Update(colCart, LookUp(colCart, ProductId = 1), { ProductId: 1, Quantity: 3 })",
+      "explanation": "`Update` replaces the entire record; use `Patch` for partial changes.",
+      "acceptedAnswers": [
+        "Update(colCart, LookUp(colCart, ProductId = 1), { ProductId: 1, Quantity: 3 })"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-026",
+      "category": "Power Fx — Core syntax",
+      "topic": "UpdateIf",
+      "origin": "GAP",
+      "prompt": "Change `Status` to `\"Expired\"` for every local row where `EndDate < Today()`.",
+      "answer": "UpdateIf(colItems, EndDate < Today(), { Status: \"Expired\" })",
+      "explanation": "`UpdateIf` applies changes to all matching records.",
+      "acceptedAnswers": [
+        "UpdateIf(colItems, EndDate < Today(), { Status: \"Expired\" })"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-027",
+      "category": "Power Fx — Core syntax",
+      "topic": "Refresh",
+      "origin": "GAP",
+      "prompt": "Force the `Accounts` data source to retrieve fresh data.",
+      "answer": "Refresh(Accounts)",
+      "acceptedAnswers": [
+        "Refresh(Accounts)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-028",
+      "category": "Power Fx — Core syntax",
+      "topic": "Set",
+      "origin": "GAP",
+      "prompt": "Create/update a global variable named `varAccountId`.",
+      "answer": "Set(varAccountId, Gallery1.Selected.AccountId)",
+      "explanation": "`Set` creates a global variable available across screens.",
+      "acceptedAnswers": [
+        "Set(varAccountId, Gallery1.Selected.AccountId)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-029",
+      "category": "Power Fx — Core syntax",
+      "topic": "UpdateContext",
+      "origin": "GAP",
+      "prompt": "Create/update a screen-scoped variable named `showDetails`.",
+      "answer": "UpdateContext({ showDetails: true })",
+      "explanation": "`UpdateContext` creates a context variable scoped to the current screen.",
+      "acceptedAnswers": [
+        "UpdateContext({ showDetails: true })"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-030",
+      "category": "Power Fx — Core syntax",
+      "topic": "Navigate context",
+      "origin": "GAP",
+      "prompt": "Navigate to `DetailsScreen` and pass a screen context variable `accountId`.",
+      "answer": "Navigate(DetailsScreen, ScreenTransition.None, { accountId: Gallery1.Selected.AccountId })",
+      "explanation": "The third argument creates/updates context variables on the target screen.",
+      "acceptedAnswers": [
+        "Navigate(DetailsScreen, ScreenTransition.None, { accountId: Gallery1.Selected.AccountId })"
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PFX-CORE-031",
+      "category": "Power Fx — Core syntax",
+      "topic": "With",
+      "origin": "DOC",
+      "prompt": "Use `With` to calculate `price * quantity` while naming the intermediate values `p` and `q`.",
+      "answer": "With({ p: price, q: quantity }, p * q)",
+      "explanation": "`With` creates local named values and improves formula readability.",
+      "acceptedAnswers": [
+        "With({ p: price, q: quantity }, p * q)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-032",
+      "category": "Power Fx — Core syntax",
+      "topic": "Named formulas",
+      "origin": "GAP",
+      "prompt": "Where do true app-level named formulas live in a canvas app?",
+      "answer": "App.Formulas",
+      "explanation": "`With` creates local named values and `Set` creates global variables; neither is the same thing as an app named formula.",
+      "acceptedAnswers": [
+        "App.Formulas",
+        "App.Formulas()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-033",
+      "category": "Power Fx — Core syntax",
+      "topic": "Named formulas",
+      "origin": "GAP",
+      "prompt": "Define an app named formula `TaxRate` with the value `0.15`.",
+      "answer": "TaxRate = 0.15;` in `App.Formulas",
+      "explanation": "Named formulas are declarative and can be evaluated when needed.",
+      "acceptedAnswers": [
+        "TaxRate = 0.15;` in `App.Formulas"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-034",
+      "category": "Power Fx — Core syntax",
+      "topic": "Concurrent",
+      "origin": "GAP",
+      "prompt": "Load Accounts and Contacts into separate collections concurrently.",
+      "answer": "Concurrent(ClearCollect(colAccounts, Accounts), ClearCollect(colContacts, Contacts))",
+      "explanation": "Use when the operations are independent; do not create dependencies between sibling arguments.",
+      "acceptedAnswers": [
+        "Concurrent(ClearCollect(colAccounts, Accounts), ClearCollect(colContacts, Contacts))"
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PFX-CORE-035",
+      "category": "Power Fx — Core syntax",
+      "topic": "If",
+      "origin": "GAP",
+      "prompt": "Return `\"High\"` when `Total > 1000`, otherwise `\"Normal\"`.",
+      "answer": "If(Total > 1000, \"High\", \"Normal\")",
+      "acceptedAnswers": [
+        "If(Total > 1000, \"High\", \"Normal\")"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-036",
+      "category": "Power Fx — Core syntax",
+      "topic": "Switch",
+      "origin": "GAP",
+      "prompt": "Map `Status` values 1, 2, and everything else to text.",
+      "answer": "Switch(Status, 1, \"New\", 2, \"Approved\", \"Other\")",
+      "acceptedAnswers": [
+        "Switch(Status, 1, \"New\", 2, \"Approved\", \"Other\")"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-037",
+      "category": "Power Fx — Core syntax",
+      "topic": "Coalesce",
+      "origin": "GAP",
+      "prompt": "Return `Nickname` when present, otherwise `FullName`.",
+      "answer": "Coalesce(Nickname, FullName)",
+      "explanation": "Returns the first value that isn't blank/empty string.",
+      "acceptedAnswers": [
+        "Coalesce(Nickname, FullName)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-038",
+      "category": "Power Fx — Core syntax",
+      "topic": "IsBlank",
+      "origin": "GAP",
+      "prompt": "Test whether `txtEmail.Text` is blank.",
+      "answer": "IsBlank(txtEmail.Text)",
+      "acceptedAnswers": [
+        "IsBlank(txtEmail.Text)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-039",
+      "category": "Power Fx — Core syntax",
+      "topic": "IsEmpty",
+      "origin": "GAP",
+      "prompt": "Test whether `colResults` contains no records.",
+      "answer": "IsEmpty(colResults)",
+      "explanation": "`IsBlank` is for blank values; `IsEmpty` is for tables with zero rows.",
+      "acceptedAnswers": [
+        "IsEmpty(colResults)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-040",
+      "category": "Power Fx — Core syntax",
+      "topic": "IfError",
+      "origin": "GAP",
+      "prompt": "Patch an Account and show a notification if the operation fails.",
+      "answer": "IfError(Patch(Accounts, Gallery1.Selected, { Name: txtName.Text }), Notify(\"Update failed\", NotificationType.Error))",
+      "explanation": "`IfError` is the direct way to branch on formula errors.",
+      "acceptedAnswers": [
+        "IfError(Patch(Accounts, Gallery1.Selected, { Name: txtName.Text }), Notify(\"Update failed\", NotificationType.Error))"
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PFX-CORE-041",
+      "category": "Power Fx — Core syntax",
+      "topic": "Errors",
+      "origin": "GAP",
+      "prompt": "Return error records for the `Accounts` data source after a data operation.",
+      "answer": "Errors(Accounts)",
+      "explanation": "Useful for inspecting data-source errors; behavior depends on formula-level error management.",
+      "acceptedAnswers": [
+        "Errors(Accounts)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-042",
+      "category": "Power Fx — Core syntax",
+      "topic": "Notify",
+      "origin": "GAP",
+      "prompt": "Show an error notification to the user.",
+      "answer": "Notify(\"Save failed\", NotificationType.Error)",
+      "acceptedAnswers": [
+        "Notify(\"Save failed\", NotificationType.Error)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-043",
+      "category": "Power Fx — Core syntax",
+      "topic": "ForAll",
+      "origin": "GAP",
+      "prompt": "For every row in `colSelected`, create a related Task record.",
+      "answer": "ForAll(colSelected, Patch(Tasks, Defaults(Tasks), { Subject: ThisRecord.Name }))",
+      "explanation": "`ForAll` evaluates a formula for each record; it is often nondelegable.",
+      "acceptedAnswers": [
+        "ForAll(colSelected, Patch(Tasks, Defaults(Tasks), { Subject: ThisRecord.Name }))"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-044",
+      "category": "Power Fx — Core syntax",
+      "topic": "Sequence",
+      "origin": "GAP",
+      "prompt": "Generate the numbers 1 through 10 as a single-column table.",
+      "answer": "Sequence(10)",
+      "acceptedAnswers": [
+        "Sequence(10)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-045",
+      "category": "Power Fx — Core syntax",
+      "topic": "ThisRecord",
+      "origin": "GAP",
+      "prompt": "Inside a record-scope formula, how do you explicitly refer to the current record?",
+      "answer": "ThisRecord",
+      "explanation": "Useful when names are ambiguous or nested.",
+      "acceptedAnswers": [
+        "ThisRecord",
+        "ThisRecord()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-046",
+      "category": "Power Fx — Core syntax",
+      "topic": "As operator",
+      "origin": "GAP",
+      "prompt": "Alias the Accounts record scope as `acct` in a `Filter`.",
+      "answer": "Filter(Accounts As acct, acct.Status = \"Active\")",
+      "explanation": "`As` makes nested record scopes clearer.",
+      "acceptedAnswers": [
+        "Filter(Accounts As acct, acct.Status = \"Active\")"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-047",
+      "category": "Power Fx — Core syntax",
+      "topic": "ThisItem",
+      "origin": "GAP",
+      "prompt": "Inside a gallery template, refer to the current row's Name.",
+      "answer": "ThisItem.Name",
+      "explanation": "`ThisItem` is the current record exposed by a gallery/form-style control.",
+      "acceptedAnswers": [
+        "ThisItem.Name",
+        "ThisItem.Name()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-048",
+      "category": "Power Fx — Core syntax",
+      "topic": "Self",
+      "origin": "DOC",
+      "prompt": "Refer to the current control's `Text` property.",
+      "answer": "Self.Text",
+      "explanation": "`Self` avoids hard-coding the control name.",
+      "acceptedAnswers": [
+        "Self.Text",
+        "Self.Text()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-049",
+      "category": "Power Fx — Core syntax",
+      "topic": "Parent",
+      "origin": "GAP",
+      "prompt": "Refer to the parent control's width.",
+      "answer": "Parent.Width",
+      "acceptedAnswers": [
+        "Parent.Width",
+        "Parent.Width()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-050",
+      "category": "Power Fx — Core syntax",
+      "topic": "SubmitForm",
+      "origin": "GAP",
+      "prompt": "Submit an Edit form named `EditForm1`.",
+      "answer": "SubmitForm(EditForm1)",
+      "acceptedAnswers": [
+        "SubmitForm(EditForm1)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-051",
+      "category": "Power Fx — Core syntax",
+      "topic": "ResetForm",
+      "origin": "GAP",
+      "prompt": "Discard unsaved changes in `EditForm1`.",
+      "answer": "ResetForm(EditForm1)",
+      "acceptedAnswers": [
+        "ResetForm(EditForm1)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-052",
+      "category": "Power Fx — Core syntax",
+      "topic": "NewForm",
+      "origin": "GAP",
+      "prompt": "Put `EditForm1` into create/new mode.",
+      "answer": "NewForm(EditForm1)",
+      "acceptedAnswers": [
+        "NewForm(EditForm1)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-053",
+      "category": "Power Fx — Core syntax",
+      "topic": "EditForm",
+      "origin": "GAP",
+      "prompt": "Put `EditForm1` into edit mode.",
+      "answer": "EditForm(EditForm1)",
+      "acceptedAnswers": [
+        "EditForm(EditForm1)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-054",
+      "category": "Power Fx — Core syntax",
+      "topic": "ViewForm",
+      "origin": "GAP",
+      "prompt": "Put `EditForm1` into view-only mode.",
+      "answer": "ViewForm(EditForm1)",
+      "acceptedAnswers": [
+        "ViewForm(EditForm1)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-055",
+      "category": "Power Fx — Core syntax",
+      "topic": "Reset",
+      "origin": "GAP",
+      "prompt": "Reset a text input named `txtSearch` back to its Default value.",
+      "answer": "Reset(txtSearch)",
+      "acceptedAnswers": [
+        "Reset(txtSearch)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-056",
+      "category": "Power Fx — Core syntax",
+      "topic": "Navigate",
+      "origin": "GAP",
+      "prompt": "Navigate to `DetailsScreen` with a fade transition.",
+      "answer": "Navigate(DetailsScreen, ScreenTransition.Fade)",
+      "acceptedAnswers": [
+        "Navigate(DetailsScreen, ScreenTransition.Fade)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-057",
+      "category": "Power Fx — Core syntax",
+      "topic": "Back",
+      "origin": "GAP",
+      "prompt": "Return to the previous screen.",
+      "answer": "Back()",
+      "acceptedAnswers": [
+        "Back()",
+        "Back"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-058",
+      "category": "Power Fx — Core syntax",
+      "topic": "Flow call",
+      "origin": "DOC",
+      "prompt": "Call a Power Automate flow named `GetCustomers` with two values.",
+      "answer": "GetCustomers.Run(value1, value2)",
+      "explanation": "The uploaded failed-question set explicitly called out the `.Run(...)` syntax.",
+      "acceptedAnswers": [
+        "GetCustomers.Run(value1, value2)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-059",
+      "category": "Power Fx — Core syntax",
+      "topic": "AddColumns",
+      "origin": "GAP",
+      "prompt": "Add a calculated `FullName` column to Contacts.",
+      "answer": "AddColumns(Contacts, FullName, FirstName & \" \" & LastName)",
+      "acceptedAnswers": [
+        "AddColumns(Contacts, FullName, FirstName & \" \" & LastName)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-060",
+      "category": "Power Fx — Core syntax",
+      "topic": "ShowColumns",
+      "origin": "GAP",
+      "prompt": "Return only Name and AccountNumber from Accounts.",
+      "answer": "ShowColumns(Accounts, Name, AccountNumber)",
+      "acceptedAnswers": [
+        "ShowColumns(Accounts, Name, AccountNumber)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-061",
+      "category": "Power Fx — Core syntax",
+      "topic": "DropColumns",
+      "origin": "GAP",
+      "prompt": "Return Accounts without the `InternalNotes` column.",
+      "answer": "DropColumns(Accounts, InternalNotes)",
+      "acceptedAnswers": [
+        "DropColumns(Accounts, InternalNotes)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-062",
+      "category": "Power Fx — Core syntax",
+      "topic": "RenameColumns",
+      "origin": "GAP",
+      "prompt": "Rename a local table column `OldName` to `NewName`.",
+      "answer": "RenameColumns(colData, OldName, NewName)",
+      "acceptedAnswers": [
+        "RenameColumns(colData, OldName, NewName)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-063",
+      "category": "Power Fx — Core syntax",
+      "topic": "GroupBy",
+      "origin": "GAP",
+      "prompt": "Group a local table `colSales` by `Region`, storing grouped rows in `RegionRows`.",
+      "answer": "GroupBy(colSales, Region, RegionRows)",
+      "acceptedAnswers": [
+        "GroupBy(colSales, Region, RegionRows)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-CORE-064",
+      "category": "Power Fx — Core syntax",
+      "topic": "Ungroup",
+      "origin": "GAP",
+      "prompt": "Flatten a grouped table using the `RegionRows` nested-table column.",
+      "answer": "Ungroup(groupedSales, RegionRows)",
+      "acceptedAnswers": [
+        "Ungroup(groupedSales, RegionRows)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-001",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Text",
+      "origin": "GAP",
+      "prompt": "Format `Total` as currency text using a format string.",
+      "answer": "Text(Total, \"$#,##0.00\")",
+      "explanation": "Formatting strings can be locale-sensitive; this question is about the function shape.",
+      "acceptedAnswers": [
+        "Text(Total, \"$#,##0.00\")"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-002",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Value",
+      "origin": "GAP",
+      "prompt": "Convert `txtAmount.Text` to a number.",
+      "answer": "Value(txtAmount.Text)",
+      "acceptedAnswers": [
+        "Value(txtAmount.Text)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-003",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Boolean",
+      "origin": "GAP",
+      "prompt": "Convert text/value input to a Boolean when supported.",
+      "answer": "Boolean(value)",
+      "acceptedAnswers": [
+        "Boolean(value)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-004",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Today",
+      "origin": "GAP",
+      "prompt": "Return the current date without a time component.",
+      "answer": "Today()",
+      "acceptedAnswers": [
+        "Today()",
+        "Today"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-005",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Now",
+      "origin": "GAP",
+      "prompt": "Return the current date and time.",
+      "answer": "Now()",
+      "acceptedAnswers": [
+        "Now()",
+        "Now"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-006",
+      "category": "Power Fx — Utility syntax",
+      "topic": "DateAdd",
+      "origin": "GAP",
+      "prompt": "Add 7 days to `StartDate`.",
+      "answer": "DateAdd(StartDate, 7, TimeUnit.Days)",
+      "acceptedAnswers": [
+        "DateAdd(StartDate, 7, TimeUnit.Days)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-007",
+      "category": "Power Fx — Utility syntax",
+      "topic": "DateDiff",
+      "origin": "GAP",
+      "prompt": "Return the number of days between `StartDate` and `EndDate`.",
+      "answer": "DateDiff(StartDate, EndDate, TimeUnit.Days)",
+      "acceptedAnswers": [
+        "DateDiff(StartDate, EndDate, TimeUnit.Days)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-008",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Year Month Day",
+      "origin": "GAP",
+      "prompt": "Extract the year from `StartDate`.",
+      "answer": "Year(StartDate)",
+      "explanation": "`Month(...)` and `Day(...)` follow the same shape.",
+      "acceptedAnswers": [
+        "Year(StartDate)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-009",
+      "category": "Power Fx — Utility syntax",
+      "topic": "GUID",
+      "origin": "GAP",
+      "prompt": "Convert `txtId.Text` to a GUID value.",
+      "answer": "GUID(txtId.Text)",
+      "acceptedAnswers": [
+        "GUID(txtId.Text)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-010",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Len",
+      "origin": "GAP",
+      "prompt": "Return the number of characters in `txtName.Text`.",
+      "answer": "Len(txtName.Text)",
+      "acceptedAnswers": [
+        "Len(txtName.Text)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-011",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Left",
+      "origin": "GAP",
+      "prompt": "Return the first three characters of `Code`.",
+      "answer": "Left(Code, 3)",
+      "acceptedAnswers": [
+        "Left(Code, 3)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-012",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Right",
+      "origin": "GAP",
+      "prompt": "Return the last four characters of `Code`.",
+      "answer": "Right(Code, 4)",
+      "acceptedAnswers": [
+        "Right(Code, 4)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-013",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Mid",
+      "origin": "GAP",
+      "prompt": "Return five characters from `Code`, starting at character 3.",
+      "answer": "Mid(Code, 3, 5)",
+      "acceptedAnswers": [
+        "Mid(Code, 3, 5)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-014",
+      "category": "Power Fx — Utility syntax",
+      "topic": "TrimEnds",
+      "origin": "GAP",
+      "prompt": "Remove leading and trailing whitespace from a text value without intentionally collapsing internal spaces.",
+      "answer": "TrimEnds(text)",
+      "explanation": "`Trim` also reduces runs of spaces; `TrimEnds` is the direct end-trimming function.",
+      "acceptedAnswers": [
+        "TrimEnds(text)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-015",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Lower Upper",
+      "origin": "GAP",
+      "prompt": "Convert `Email` to lowercase.",
+      "answer": "Lower(Email)",
+      "explanation": "`Upper(...)` is the corresponding uppercase function.",
+      "acceptedAnswers": [
+        "Lower(Email)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-016",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Concatenate",
+      "origin": "GAP",
+      "prompt": "Join `FirstName`, a space, and `LastName` using a function rather than `&`.",
+      "answer": "Concatenate(FirstName, \" \", LastName)",
+      "acceptedAnswers": [
+        "Concatenate(FirstName, \" \", LastName)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-017",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Substitute",
+      "origin": "DOC",
+      "prompt": "Replace `\"-\"` with `\"/\"` in `Code`.",
+      "answer": "Substitute(Code, \"-\", \"/\")",
+      "explanation": "This function was explicitly present in the failed-question material.",
+      "acceptedAnswers": [
+        "Substitute(Code, \"-\", \"/\")"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-018",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Split",
+      "origin": "DOC",
+      "prompt": "Split a comma-separated `Tags` string into a single-column table.",
+      "answer": "Split(Tags, \",\")",
+      "explanation": "This function was explicitly contrasted with `With` in the failed-question material.",
+      "acceptedAnswers": [
+        "Split(Tags, \",\")"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-019",
+      "category": "Power Fx — Utility syntax",
+      "topic": "IsMatch",
+      "origin": "GAP",
+      "prompt": "Test whether `txtEmail.Text` matches an email pattern.",
+      "answer": "IsMatch(txtEmail.Text, Match.Email)",
+      "acceptedAnswers": [
+        "IsMatch(txtEmail.Text, Match.Email)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-020",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Match",
+      "origin": "GAP",
+      "prompt": "Return the first regex match from a text string.",
+      "answer": "Match(text, pattern)",
+      "acceptedAnswers": [
+        "Match(text, pattern)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-021",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Rand",
+      "origin": "GAP",
+      "prompt": "Return a random decimal between 0 and 1.",
+      "answer": "Rand()",
+      "acceptedAnswers": [
+        "Rand()",
+        "Rand"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-022",
+      "category": "Power Fx — Utility syntax",
+      "topic": "RandBetween",
+      "origin": "GAP",
+      "prompt": "Return a random integer from 1 through 10.",
+      "answer": "RandBetween(1, 10)",
+      "acceptedAnswers": [
+        "RandBetween(1, 10)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-023",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Round",
+      "origin": "GAP",
+      "prompt": "Round `Amount` to two decimal places.",
+      "answer": "Round(Amount, 2)",
+      "acceptedAnswers": [
+        "Round(Amount, 2)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-024",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Max Min",
+      "origin": "GAP",
+      "prompt": "Return the maximum value of the `Total` column in `Orders`.",
+      "answer": "Max(Orders, Total)",
+      "explanation": "`Min(...)` has the same shape.",
+      "acceptedAnswers": [
+        "Max(Orders, Total)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-025",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Sum",
+      "origin": "GAP",
+      "prompt": "Return the sum of the `Total` column in `Orders`.",
+      "answer": "Sum(Orders, Total)",
+      "acceptedAnswers": [
+        "Sum(Orders, Total)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-026",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Average",
+      "origin": "GAP",
+      "prompt": "Return the average of the `Score` column in `colScores`.",
+      "answer": "Average(colScores, Score)",
+      "acceptedAnswers": [
+        "Average(colScores, Score)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-027",
+      "category": "Power Fx — Utility syntax",
+      "topic": "User",
+      "origin": "GAP",
+      "prompt": "Return information about the current Power Apps user.",
+      "answer": "User()",
+      "explanation": "Remember that some hosts, such as model-driven commanding, support only a restricted Power Fx subset.",
+      "acceptedAnswers": [
+        "User()",
+        "User"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-028",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Param",
+      "origin": "GAP",
+      "prompt": "Read an app launch parameter named `AccountId`.",
+      "answer": "Param(\"AccountId\")",
+      "acceptedAnswers": [
+        "Param(\"AccountId\")"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-029",
+      "category": "Power Fx — Utility syntax",
+      "topic": "Blank",
+      "origin": "GAP",
+      "prompt": "Return a blank value explicitly.",
+      "answer": "Blank()",
+      "acceptedAnswers": [
+        "Blank()",
+        "Blank"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-UTIL-030",
+      "category": "Power Fx — Utility syntax",
+      "topic": "IsError",
+      "origin": "GAP",
+      "prompt": "Test whether an expression/value is an error.",
+      "answer": "IsError(expression)",
+      "acceptedAnswers": [
+        "IsError(expression)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-001",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Delegation",
+      "origin": "GAP",
+      "prompt": "What does delegation mean in a canvas app?",
+      "answer": "The Power Fx query is translated and executed by the remote data source, which returns only the needed results.",
+      "explanation": "This is required for correct results over large data sources.",
+      "acceptedAnswers": [
+        "The Power Fx query is translated and executed by the remote data source, which returns only the needed results."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PFX-DEL-002",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Delegation",
+      "origin": "DOC",
+      "prompt": "If any part of a query expression is nondelegable, what happens to that query?",
+      "answer": "Power Apps does not delegate any part of the query and evaluates it locally against the retrieved row limit.",
+      "explanation": "This is the important all-or-nothing behavior.",
+      "acceptedAnswers": [
+        "Power Apps does not delegate any part of the query and evaluates it locally against the retrieved row limit."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PFX-DEL-003",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Nondelegable limit",
+      "origin": "DOC",
+      "prompt": "What is the default local row limit for a nondelegable query?",
+      "answer": "`500` records.",
+      "explanation": "The setting can be raised, but this does not make a nondelegable query correct for arbitrary large data.",
+      "acceptedAnswers": [
+        "`500` records."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-004",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Nondelegable limit",
+      "origin": "DOC",
+      "prompt": "What is the documented maximum canvas-app data row limit for nondelegable queries?",
+      "answer": "`2,000` records.",
+      "acceptedAnswers": [
+        "`2,000` records."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-005",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Delegation testing",
+      "origin": "DOC",
+      "prompt": "What temporary Data row limit makes hidden nondelegation easiest to detect in testing?",
+      "answer": "1",
+      "explanation": "If the formula still appears to work with a limit of 1, it is strong evidence the relevant query delegates.",
+      "acceptedAnswers": [
+        "1"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-006",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "With delegation",
+      "origin": "DOC",
+      "prompt": "Why can a `With` around a large remote query be dangerous even when no delegation warning appears?",
+      "answer": "`With` creates an in-memory collection internally; collections do not delegate, and this case can produce no delegation warning.",
+      "explanation": "Absence of a warning is not proof of delegation.",
+      "acceptedAnswers": [
+        "`With` creates an in-memory collection internally; collections do not delegate, and this case can produce no delegation warning."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PFX-DEL-007",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Set delegation",
+      "origin": "DOC",
+      "prompt": "Does putting remote query results into `Set(...)` make the query delegable?",
+      "answer": "No. `Set` creates in-memory state and cannot itself participate in delegation.",
+      "explanation": "The uploaded bank specifically highlights the no-warning trap for `With`, `Set`, and `UpdateContext`.",
+      "acceptedAnswers": [
+        "No. `Set` creates in-memory state and cannot itself participate in delegation."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-008",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "UpdateContext delegation",
+      "origin": "DOC",
+      "prompt": "Does `UpdateContext(...)` participate in delegation?",
+      "answer": "No.",
+      "explanation": "It creates screen-scoped in-memory state.",
+      "acceptedAnswers": [
+        "No.",
+        "No.()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-009",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Filter delegation",
+      "origin": "GAP",
+      "prompt": "Is `Filter` always delegable?",
+      "answer": "No. It delegates only when the data source and every function/operator used in the predicate support delegation.",
+      "acceptedAnswers": [
+        "No. It delegates only when the data source and every function/operator used in the predicate support delegation."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PFX-DEL-010",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Sort delegation",
+      "origin": "DOC",
+      "prompt": "When can `Sort` delegate?",
+      "answer": "When the data source supports delegation for the sort expression used.",
+      "explanation": "A delegable function can become nondelegable because of the specific formula/data source.",
+      "acceptedAnswers": [
+        "When the data source supports delegation for the sort expression used."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-011",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Search delegation",
+      "origin": "GAP",
+      "prompt": "Should you assume `Search` delegates against Dataverse in every host/context?",
+      "answer": "No. Check the current delegation table and host support; do not infer delegation from the function name.",
+      "acceptedAnswers": [
+        "No. Check the current delegation table and host support; do not infer delegation from the function name."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PFX-DEL-012",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "FirstN delegation",
+      "origin": "GAP",
+      "prompt": "Should `FirstN` be used to 'fix' a large nondelegable query?",
+      "answer": "No. Limiting local results is not the same as delegating the query to the server.",
+      "acceptedAnswers": [
+        "No. Limiting local results is not the same as delegating the query to the server."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PFX-DEL-013",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Lookup expansion",
+      "origin": "GAP",
+      "prompt": "How many lookup/expand levels does the canvas-app delegation guidance allow in a query expression?",
+      "answer": "Up to `2` lookup levels; offline scenarios support only `1`.",
+      "acceptedAnswers": [
+        "Up to `2` lookup levels; offline scenarios support only `1`."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-014",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Lookup joins",
+      "origin": "GAP",
+      "prompt": "What is the documented maximum number of entities that can be expanded/joined in a single Power Fx query?",
+      "answer": "`20` entities.",
+      "acceptedAnswers": [
+        "`20` entities."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-015",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Delegation LHS",
+      "origin": "GAP",
+      "prompt": "For delegable equality comparisons, where should the entity property generally appear?",
+      "answer": "On the left-hand side of the equality operator.",
+      "explanation": "Example: `Filter(Accounts, AccountId = someGuid)` rather than reversing the entity property to the right.",
+      "acceptedAnswers": [
+        "On the left-hand side of the equality operator."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-016",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Command visibility",
+      "origin": "DOC",
+      "prompt": "A model-driven command must be visible only when at least one grid row is selected. Write the expression.",
+      "answer": "CountRows(Self.Selected.AllItems) > 0",
+      "explanation": "This exact pattern appears in the uploaded material.",
+      "acceptedAnswers": [
+        "CountRows(Self.Selected.AllItems) > 0"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-017",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Command selection",
+      "origin": "DOC",
+      "prompt": "Which command property represents all selected grid rows?",
+      "answer": "Self.Selected.AllItems",
+      "explanation": "Use `Self.Selected.Item` only when the command is configured for a single selection.",
+      "acceptedAnswers": [
+        "Self.Selected.AllItems",
+        "Self.Selected.AllItems()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-018",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Command selection",
+      "origin": "DOC",
+      "prompt": "What happens to `Self.Selected.Item` when the selection maximum is not 1?",
+      "answer": "It is blank.",
+      "explanation": "This prevents single-row formulas from silently being used for multi-row commands.",
+      "acceptedAnswers": [
+        "It is blank."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-019",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Command Power Fx",
+      "origin": "DOC",
+      "prompt": "Can every canvas-app Power Fx function be used in model-driven commanding?",
+      "answer": "No.",
+      "explanation": "The commanding host has a restricted function set; the uploaded bank notes unsupported examples such as `User`, `Set`, `UpdateContext`, `Collect`, and `Param`.",
+      "acceptedAnswers": [
+        "No.",
+        "No.()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-020",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Performance",
+      "origin": "DOC",
+      "prompt": "Live Monitor shows the same Dataverse table fetched repeatedly during one screen load. What pattern does Microsoft recommend considering?",
+      "answer": "Cache/reuse the data in collections or variables instead of repeatedly fetching the same source.",
+      "acceptedAnswers": [
+        "Cache/reuse the data in collections or variables instead of repeatedly fetching the same source."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PFX-DEL-021",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Concurrent dependencies",
+      "origin": "GAP",
+      "prompt": "Can one sibling argument inside `Concurrent(...)` safely depend on the result of another sibling argument?",
+      "answer": "No.",
+      "explanation": "Sibling formulas may start and finish in unpredictable order.",
+      "acceptedAnswers": [
+        "No.",
+        "No.()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PFX-DEL-022",
+      "category": "Power Fx — Delegation, commands, and performance",
+      "topic": "Concurrent scope",
+      "origin": "GAP",
+      "prompt": "Where can `Concurrent` be used?",
+      "answer": "In behavior formulas.",
+      "explanation": "It is for side-effecting/behavior formulas, not general declarative properties.",
+      "acceptedAnswers": [
+        "In behavior formulas."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-001",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "current status",
+      "origin": "GAP",
+      "prompt": "What is the current status you should remember for Dataverse low-code plug-ins?",
+      "answer": "They are a **preview** feature.",
+      "explanation": "Do not treat them as a mature GA replacement for C# plug-ins.",
+      "acceptedAnswers": [
+        "They are a **preview** feature."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-002",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "instant plug-ins",
+      "origin": "GAP",
+      "prompt": "What current Microsoft guidance applies specifically to **instant** low-code plug-ins?",
+      "answer": "Instant low-code plug-ins are deprioritized and are being replaced by **Functions in Microsoft Dataverse** (preview).",
+      "explanation": "This is a current-version correction to older material.",
+      "acceptedAnswers": [
+        "Instant low-code plug-ins are deprioritized and are being replaced by **Functions in Microsoft Dataverse** (preview)."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PFX-003",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "Dataverse Functions",
+      "origin": "GAP",
+      "prompt": "What language is used to author a Dataverse Function?",
+      "answer": "Power Fx.",
+      "acceptedAnswers": [
+        "Power Fx."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-004",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "Dataverse Functions parameters",
+      "origin": "GAP",
+      "prompt": "How are Dataverse Function input parameters referenced inside the formula?",
+      "answer": "Directly by their parameter names.",
+      "acceptedAnswers": [
+        "Directly by their parameter names."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-005",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "Dataverse Functions outputs",
+      "origin": "GAP",
+      "prompt": "A Dataverse Function has an output parameter named `Out`. What is the required output-record syntax?",
+      "answer": "{ Out: \"Return value\" }",
+      "explanation": "Output parameters are returned as fields of a record in curly braces.",
+      "acceptedAnswers": [
+        "{ Out: \"Return value\" }"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-006",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "Dataverse Functions tables",
+      "origin": "GAP",
+      "prompt": "Which familiar Power Fx functions can query table references inside a Dataverse Function?",
+      "answer": "`Filter()` and `LookUp()` are key examples.",
+      "acceptedAnswers": [
+        "`Filter()` and `LookUp()` are key examples."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-007",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "low-code plug-in scope",
+      "origin": "GAP",
+      "prompt": "What two scopes can an instant low-code plug-in use?",
+      "answer": "Table/entity scope or global scope.",
+      "acceptedAnswers": [
+        "Table/entity scope or global scope."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-008",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "instant parameters",
+      "origin": "GAP",
+      "prompt": "Which low-code plug-in type supports custom input and output parameters?",
+      "answer": "Instant low-code plug-ins.",
+      "acceptedAnswers": [
+        "Instant low-code plug-ins."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-009",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "automated plug-ins",
+      "origin": "GAP",
+      "prompt": "Which Dataverse operations can automated low-code plug-ins respond to?",
+      "answer": "Create, Update, and Delete table events.",
+      "acceptedAnswers": [
+        "Create, Update, and Delete table events."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-010",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "automated context",
+      "origin": "GAP",
+      "prompt": "Which Power Fx record-scope keyword represents the row being processed in an automated low-code plug-in?",
+      "answer": "ThisRecord",
+      "acceptedAnswers": [
+        "ThisRecord",
+        "ThisRecord()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-011",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "table disambiguation",
+      "origin": "GAP",
+      "prompt": "When a Dataverse table name conflicts with record scope, what explicit table notation can disambiguate it?",
+      "answer": "`[@TableName]` — for example, `[@Accounts]`.",
+      "acceptedAnswers": [
+        "`[@TableName]` — for example, `[@Accounts]`."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-012",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "server-side",
+      "origin": "GAP",
+      "prompt": "Where does Dataverse low-code plug-in / Function Power Fx execute?",
+      "answer": "Server-side in Dataverse.",
+      "explanation": "That is why it can enforce logic independently of a particular canvas screen.",
+      "acceptedAnswers": [
+        "Server-side in Dataverse."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-013",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "unsupported functions",
+      "origin": "GAP",
+      "prompt": "Should you assume every canvas-app Power Fx function is available inside a low-code plug-in?",
+      "answer": "No. Low-code plug-ins support a restricted subset and some functions have limitations or alternatives.",
+      "acceptedAnswers": [
+        "No. Low-code plug-ins support a restricted subset and some functions have limitations or alternatives."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PFX-014",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "Defaults limitation",
+      "origin": "GAP",
+      "prompt": "Can you rely on `Defaults()` inside a Dataverse low-code plug-in?",
+      "answer": "No. Current low-code plug-in guidance lists `Defaults` as unsupported; use the documented supported creation pattern such as `Collect` where appropriate.",
+      "acceptedAnswers": [
+        "No. Current low-code plug-in guidance lists `Defaults` as unsupported; use the documented supported creation pattern such as `Collect` where appropriate."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PFX-015",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "Concurrent limitation",
+      "origin": "GAP",
+      "prompt": "Is `Concurrent()` supported in Dataverse low-code plug-ins?",
+      "answer": "No, not according to the current low-code plug-in supported-function table.",
+      "acceptedAnswers": [
+        "No, not according to the current low-code plug-in supported-function table."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-016",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "Search limitation",
+      "origin": "GAP",
+      "prompt": "Is `Search()` supported in Dataverse low-code plug-ins?",
+      "answer": "No, not according to the current low-code plug-in supported-function table.",
+      "acceptedAnswers": [
+        "No, not according to the current low-code plug-in supported-function table."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PFX-017",
+      "category": "Dataverse Power Fx — functions and low-code server logic",
+      "topic": "Choices limitation",
+      "origin": "GAP",
+      "prompt": "Is `Choices()` supported in Dataverse low-code plug-ins?",
+      "answer": "No, not according to the current low-code plug-in supported-function table.",
+      "acceptedAnswers": [
+        "No, not according to the current low-code plug-in supported-function table."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-001",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IPlugin",
+      "origin": "GAP",
+      "prompt": "Which interface must a traditional Dataverse plug-in class implement?",
+      "answer": "Microsoft.Xrm.Sdk.IPlugin",
+      "acceptedAnswers": [
+        "Microsoft.Xrm.Sdk.IPlugin",
+        "Microsoft.Xrm.Sdk.IPlugin()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-002",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IPlugin.Execute",
+      "origin": "DOC",
+      "prompt": "What is the standard plug-in entry-point signature?",
+      "answer": "void Execute(IServiceProvider serviceProvider)",
+      "explanation": "`IServiceProvider` is the single entry point from which Dataverse services are requested.",
+      "acceptedAnswers": [
+        "void Execute(IServiceProvider serviceProvider)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-003",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IServiceProvider",
+      "origin": "DOC",
+      "prompt": "Which parameter gives a plug-in access to execution context and platform services?",
+      "answer": "IServiceProvider serviceProvider",
+      "explanation": "The uploaded failed questions explicitly target remembering this name.",
+      "acceptedAnswers": [
+        "IServiceProvider serviceProvider"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-004",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IPluginExecutionContext",
+      "origin": "DOC",
+      "prompt": "Write the common line that retrieves the plug-in execution context.",
+      "answer": "var context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));",
+      "acceptedAnswers": [
+        "var context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));"
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-005",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "ITracingService",
+      "origin": "GAP",
+      "prompt": "Write the common line that retrieves the tracing service.",
+      "answer": "var tracing = (ITracingService)serviceProvider.GetService(typeof(ITracingService));",
+      "acceptedAnswers": [
+        "var tracing = (ITracingService)serviceProvider.GetService(typeof(ITracingService));"
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-006",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IOrganizationServiceFactory",
+      "origin": "GAP",
+      "prompt": "Write the common line that retrieves the organization service factory.",
+      "answer": "var factory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));",
+      "acceptedAnswers": [
+        "var factory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));"
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-007",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IOrganizationServiceFactory",
+      "origin": "DOC",
+      "prompt": "Create an `IOrganizationService` that runs as the current plug-in user.",
+      "answer": "var service = factory.CreateOrganizationService(context.UserId);",
+      "explanation": "This binds operations to the selected user's privileges.",
+      "acceptedAnswers": [
+        "var service = factory.CreateOrganizationService(context.UserId);"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-008",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IPluginExecutionContext.MessageName",
+      "origin": "DOC",
+      "prompt": "Which execution-context property tells you whether the current message is Create, Update, Delete, and so on?",
+      "answer": "context.MessageName",
+      "acceptedAnswers": [
+        "context.MessageName",
+        "context.MessageName()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-009",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IPluginExecutionContext.Stage",
+      "origin": "GAP",
+      "prompt": "Which context property identifies the pipeline stage?",
+      "answer": "context.Stage",
+      "explanation": "Typical numeric values are 10 PreValidation, 20 PreOperation, 40 PostOperation.",
+      "acceptedAnswers": [
+        "context.Stage",
+        "context.Stage()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-010",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IPluginExecutionContext.Mode",
+      "origin": "GAP",
+      "prompt": "Which context property tells you whether execution is synchronous or asynchronous?",
+      "answer": "context.Mode",
+      "acceptedAnswers": [
+        "context.Mode",
+        "context.Mode()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-011",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IPluginExecutionContext.Depth",
+      "origin": "GAP",
+      "prompt": "Which context property is commonly checked to detect recursive/nested plug-in execution?",
+      "answer": "context.Depth",
+      "explanation": "Do not use it as a blanket business-rule substitute, but know the syntax.",
+      "acceptedAnswers": [
+        "context.Depth",
+        "context.Depth()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-012",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IPluginExecutionContext.UserId",
+      "origin": "GAP",
+      "prompt": "Which context property identifies the user the plug-in is executing as?",
+      "answer": "context.UserId",
+      "acceptedAnswers": [
+        "context.UserId",
+        "context.UserId()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-013",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IPluginExecutionContext.InitiatingUserId",
+      "origin": "GAP",
+      "prompt": "Which property identifies the user who originally initiated the operation?",
+      "answer": "context.InitiatingUserId",
+      "acceptedAnswers": [
+        "context.InitiatingUserId",
+        "context.InitiatingUserId()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-014",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IPluginExecutionContext.PrimaryEntityName",
+      "origin": "GAP",
+      "prompt": "Which property gives the logical name of the primary Dataverse table for the event?",
+      "answer": "context.PrimaryEntityName",
+      "acceptedAnswers": [
+        "context.PrimaryEntityName",
+        "context.PrimaryEntityName()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-015",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IPluginExecutionContext.PrimaryEntityId",
+      "origin": "GAP",
+      "prompt": "Which property gives the primary row ID?",
+      "answer": "context.PrimaryEntityId",
+      "acceptedAnswers": [
+        "context.PrimaryEntityId",
+        "context.PrimaryEntityId()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-016",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "InputParameters",
+      "origin": "GAP",
+      "prompt": "Where is the target row normally found for Create/Update messages?",
+      "answer": "context.InputParameters[\"Target\"]",
+      "explanation": "For Create/Update it is typically an `Entity`; message-specific contracts still matter.",
+      "acceptedAnswers": [
+        "context.InputParameters[\"Target\"]"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-017",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Target Entity",
+      "origin": "GAP",
+      "prompt": "Write a safe pattern that obtains the Target as an `Entity`.",
+      "answer": "if (context.InputParameters.Contains(\"Target\") && context.InputParameters[\"Target\"] is Entity target) { ... }",
+      "acceptedAnswers": [
+        "if (context.InputParameters.Contains(\"Target\") && context.InputParameters[\"Target\"] is Entity target) { ... }"
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-018",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "SharedVariables",
+      "origin": "DOC",
+      "prompt": "Which execution-context property passes custom data to later plug-in steps in the same pipeline?",
+      "answer": "context.SharedVariables",
+      "explanation": "This is directly called out in several uploaded failed-question sets.",
+      "acceptedAnswers": [
+        "context.SharedVariables",
+        "context.SharedVariables()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-019",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "SharedVariables",
+      "origin": "GAP",
+      "prompt": "Store a value named `RiskScore` for a later step.",
+      "answer": "context.SharedVariables[\"RiskScore\"] = score;",
+      "acceptedAnswers": [
+        "context.SharedVariables[\"RiskScore\"] = score;"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-020",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "SharedVariables",
+      "origin": "GAP",
+      "prompt": "Read a previously stored `RiskScore`.",
+      "answer": "var score = (int)context.SharedVariables[\"RiskScore\"];",
+      "explanation": "Check existence/type in production code.",
+      "acceptedAnswers": [
+        "var score = (int)context.SharedVariables[\"RiskScore\"];"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-021",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "PreEntityImages",
+      "origin": "DOC",
+      "prompt": "Which context collection contains registered pre-operation snapshots?",
+      "answer": "context.PreEntityImages",
+      "acceptedAnswers": [
+        "context.PreEntityImages",
+        "context.PreEntityImages()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-022",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "PostEntityImages",
+      "origin": "DOC",
+      "prompt": "Which context collection contains registered post-operation snapshots?",
+      "answer": "context.PostEntityImages",
+      "acceptedAnswers": [
+        "context.PostEntityImages",
+        "context.PostEntityImages()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-023",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Entity images",
+      "origin": "DOC",
+      "prompt": "Why use entity images instead of an extra `Retrieve` just to compare old/new values?",
+      "answer": "They provide registered snapshots in the execution context and avoid an extra service call.",
+      "explanation": "The uploaded docs repeatedly flag this as a plug-in performance pattern.",
+      "acceptedAnswers": [
+        "They provide registered snapshots in the execution context and avoid an extra service call."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-024",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Entity images",
+      "origin": "DOC",
+      "prompt": "Should you accept the default 'all columns' image configuration?",
+      "answer": "No. Register only the columns the plug-in needs.",
+      "explanation": "Returning all columns can hurt performance.",
+      "acceptedAnswers": [
+        "No. Register only the columns the plug-in needs."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-025",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "OutputParameters",
+      "origin": "DOC",
+      "prompt": "What does `context.OutputParameters` contain?",
+      "answer": "Parameters of the response message after the core platform operation.",
+      "explanation": "This is different from `SharedVariables`, which are for passing custom state between steps.",
+      "acceptedAnswers": [
+        "Parameters of the response message after the core platform operation."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-026",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "InvalidPluginExecutionException",
+      "origin": "DOC",
+      "prompt": "Which exception class should a plug-in throw to cancel an operation with a user-facing message?",
+      "answer": "InvalidPluginExecutionException",
+      "acceptedAnswers": [
+        "InvalidPluginExecutionException",
+        "InvalidPluginExecutionException()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-027",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "PreValidation",
+      "origin": "DOC",
+      "prompt": "Which stage is preferred for rejecting invalid input before the initial database transaction?",
+      "answer": "PreValidation",
+      "explanation": "Use it for cancellation/validation when you do not want to force a transaction rollback.",
+      "acceptedAnswers": [
+        "PreValidation",
+        "PreValidation()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-028",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "PreOperation",
+      "origin": "DOC",
+      "prompt": "Which stage should you use to change values on the incoming Target before Dataverse writes the row?",
+      "answer": "PreOperation",
+      "acceptedAnswers": [
+        "PreOperation",
+        "PreOperation()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-029",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "PostOperation",
+      "origin": "DOC",
+      "prompt": "Which synchronous stage is appropriate when logic needs the completed operation/result?",
+      "answer": "PostOperation",
+      "acceptedAnswers": [
+        "PostOperation",
+        "PostOperation()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-030",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Async stage",
+      "origin": "GAP",
+      "prompt": "At which pipeline stage can a step be registered asynchronously?",
+      "answer": "PostOperation",
+      "explanation": "Asynchronous execution is not available for PreValidation/PreOperation.",
+      "acceptedAnswers": [
+        "PostOperation",
+        "PostOperation()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-031",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Stateless plug-ins",
+      "origin": "DOC",
+      "prompt": "Should an `IPlugin` implementation store `IOrganizationService` or `IPluginExecutionContext` in mutable instance fields?",
+      "answer": "No. Plug-in implementations should be stateless across invocations.",
+      "explanation": "Configuration supplied via the constructor is a documented exception for member fields.",
+      "acceptedAnswers": [
+        "No. Plug-in implementations should be stateless across invocations."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-032",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Secure configuration",
+      "origin": "DOC",
+      "prompt": "How are secure and unsecure plug-in registration configuration values passed to the plug-in?",
+      "answer": "As constructor string parameters, commonly `(string unsecure, string secure)`.",
+      "acceptedAnswers": [
+        "As constructor string parameters, commonly `(string unsecure, string secure)`."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-033",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Secure configuration",
+      "origin": "DOC",
+      "prompt": "Where is secure plug-in configuration stored?",
+      "answer": "In a separate Dataverse table readable only by appropriately privileged administrators.",
+      "acceptedAnswers": [
+        "In a separate Dataverse table readable only by appropriately privileged administrators."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-034",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Early-bound vs late-bound",
+      "origin": "DOC",
+      "prompt": "What is an early-bound Dataverse class?",
+      "answer": "A generated strongly typed .NET class for a Dataverse table, with CLR properties for columns.",
+      "explanation": "Late-bound code uses the generic `Entity` class and logical names.",
+      "acceptedAnswers": [
+        "A generated strongly typed .NET class for a Dataverse table, with CLR properties for columns."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-035",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Early-bound InputParameters",
+      "origin": "DOC",
+      "prompt": "What type are table values supplied in plug-in `InputParameters`?",
+      "answer": "Late-bound `Entity` types.",
+      "explanation": "They may be converted/read as early-bound, but setting InputParameters with an early-bound instance can cause serialization problems.",
+      "acceptedAnswers": [
+        "Late-bound `Entity` types."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-036",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Entity",
+      "origin": "GAP",
+      "prompt": "What SDK class represents a generic Dataverse row in late-bound code?",
+      "answer": "Microsoft.Xrm.Sdk.Entity",
+      "acceptedAnswers": [
+        "Microsoft.Xrm.Sdk.Entity",
+        "Microsoft.Xrm.Sdk.Entity()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-037",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "EntityReference",
+      "origin": "GAP",
+      "prompt": "What SDK class represents a reference to another Dataverse row?",
+      "answer": "EntityReference",
+      "acceptedAnswers": [
+        "EntityReference",
+        "EntityReference()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-038",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "EntityReference",
+      "origin": "GAP",
+      "prompt": "Create an EntityReference to Account with ID `accountId`.",
+      "answer": "new EntityReference(\"account\", accountId)",
+      "acceptedAnswers": [
+        "new EntityReference(\"account\", accountId)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-039",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "EntityCollection",
+      "origin": "GAP",
+      "prompt": "What SDK class represents a collection of Dataverse `Entity` rows?",
+      "answer": "EntityCollection",
+      "acceptedAnswers": [
+        "EntityCollection",
+        "EntityCollection()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-040",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "ColumnSet",
+      "origin": "GAP",
+      "prompt": "Retrieve only `name` and `accountnumber` for an Account. What `ColumnSet` should you use?",
+      "answer": "new ColumnSet(\"name\", \"accountnumber\")",
+      "explanation": "Avoid `new ColumnSet(true)` unless you truly need every column.",
+      "acceptedAnswers": [
+        "new ColumnSet(\"name\", \"accountnumber\")"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-041",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "OptionSetValue",
+      "origin": "GAP",
+      "prompt": "Which SDK class represents a Dataverse Choice/Option Set value in traditional SDK code?",
+      "answer": "OptionSetValue",
+      "acceptedAnswers": [
+        "OptionSetValue",
+        "OptionSetValue()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-042",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Money",
+      "origin": "GAP",
+      "prompt": "Which SDK class represents a Dataverse Currency value?",
+      "answer": "Money",
+      "acceptedAnswers": [
+        "Money",
+        "Money()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-043",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IOrganizationService",
+      "origin": "DOC",
+      "prompt": "Which interface exposes the core Organization service methods?",
+      "answer": "IOrganizationService",
+      "explanation": "Microsoft currently recommends `ServiceClient` for new client applications.",
+      "acceptedAnswers": [
+        "IOrganizationService",
+        "IOrganizationService()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-044",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IOrganizationService methods",
+      "origin": "GAP",
+      "prompt": "Name the eight methods directly defined by `IOrganizationService`.",
+      "answer": "Associate`, `Create`, `Delete`, `Disassociate`, `Execute`, `Retrieve`, `RetrieveMultiple`, `Update",
+      "acceptedAnswers": [
+        "Associate`, `Create`, `Delete`, `Disassociate`, `Execute`, `Retrieve`, `RetrieveMultiple`, `Update"
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-045",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Create",
+      "origin": "GAP",
+      "prompt": "Create an Account Entity through `IOrganizationService`.",
+      "answer": "Guid id = service.Create(accountEntity);",
+      "acceptedAnswers": [
+        "Guid id = service.Create(accountEntity);"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-046",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Retrieve",
+      "origin": "GAP",
+      "prompt": "Retrieve one Account by ID and selected columns.",
+      "answer": "Entity account = service.Retrieve(\"account\", accountId, new ColumnSet(\"name\"));",
+      "acceptedAnswers": [
+        "Entity account = service.Retrieve(\"account\", accountId, new ColumnSet(\"name\"));"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-047",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "RetrieveMultiple",
+      "origin": "DOC",
+      "prompt": "Which Organization service method executes a `QueryExpression`, `FetchExpression`, or `QueryByAttribute` and returns multiple rows?",
+      "answer": "RetrieveMultiple",
+      "explanation": "This exact distinction appears in the uploaded bank.",
+      "acceptedAnswers": [
+        "RetrieveMultiple",
+        "RetrieveMultiple()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-048",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "RetrieveMultiple",
+      "origin": "GAP",
+      "prompt": "Write the common syntax to execute a `QueryExpression query`.",
+      "answer": "EntityCollection results = service.RetrieveMultiple(query);",
+      "acceptedAnswers": [
+        "EntityCollection results = service.RetrieveMultiple(query);"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-049",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Update",
+      "origin": "GAP",
+      "prompt": "Update a late-bound Account's name without retrieving the whole row first.",
+      "answer": "var account = new Entity(\"account\", accountId) { [\"name\"] = \"New Name\" }; service.Update(account);",
+      "acceptedAnswers": [
+        "var account = new Entity(\"account\", accountId) { [\"name\"] = \"New Name\" }; service.Update(account);"
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-050",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Delete",
+      "origin": "GAP",
+      "prompt": "Delete an Account by ID.",
+      "answer": "service.Delete(\"account\", accountId);",
+      "acceptedAnswers": [
+        "service.Delete(\"account\", accountId);"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-051",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Associate",
+      "origin": "GAP",
+      "prompt": "Which `IOrganizationService` method links rows through a relationship?",
+      "answer": "Associate",
+      "acceptedAnswers": [
+        "Associate",
+        "Associate()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-052",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Disassociate",
+      "origin": "GAP",
+      "prompt": "Which method removes a relationship link without deleting the rows?",
+      "answer": "Disassociate",
+      "acceptedAnswers": [
+        "Disassociate",
+        "Disassociate()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-053",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Execute",
+      "origin": "DOC",
+      "prompt": "When do you use `IOrganizationService.Execute(...)` instead of the CRUD methods?",
+      "answer": "When invoking a Dataverse message represented by an `OrganizationRequest` or derived request class.",
+      "acceptedAnswers": [
+        "When invoking a Dataverse message represented by an `OrganizationRequest` or derived request class."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-054",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "OrganizationRequest",
+      "origin": "GAP",
+      "prompt": "What is `OrganizationRequest`?",
+      "answer": "The base SDK request type for message-based operations executed through `IOrganizationService.Execute`.",
+      "acceptedAnswers": [
+        "The base SDK request type for message-based operations executed through `IOrganizationService.Execute`."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-055",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "CreateRequest",
+      "origin": "DOC",
+      "prompt": "What request class represents the Create message when using the message/request pattern?",
+      "answer": "CreateRequest",
+      "explanation": "A matching `CreateResponse` is returned.",
+      "acceptedAnswers": [
+        "CreateRequest",
+        "CreateRequest()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-056",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "ServiceClient",
+      "origin": "DOC",
+      "prompt": "Which `IOrganizationService` implementation does Microsoft recommend for new client application development?",
+      "answer": "Microsoft.PowerPlatform.Dataverse.Client.ServiceClient",
+      "explanation": "It supports modern MSAL authentication and additional features.",
+      "acceptedAnswers": [
+        "Microsoft.PowerPlatform.Dataverse.Client.ServiceClient",
+        "Microsoft.PowerPlatform.Dataverse.Client.ServiceClient()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-057",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "CrmServiceClient",
+      "origin": "DOC",
+      "prompt": "How should you treat `Microsoft.Xrm.Tooling.Connector.CrmServiceClient` in new code?",
+      "answer": "As the older implementation; prefer `ServiceClient` for new development.",
+      "explanation": "Some uploaded failed questions mention `CrmServiceClient`; the current SDK guidance recommends `ServiceClient`.",
+      "acceptedAnswers": [
+        "As the older implementation; prefer `ServiceClient` for new development."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-058",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "QueryExpression",
+      "origin": "GAP",
+      "prompt": "Create a query for Accounts that returns only the `name` column.",
+      "answer": "var query = new QueryExpression(\"account\") { ColumnSet = new ColumnSet(\"name\") };",
+      "acceptedAnswers": [
+        "var query = new QueryExpression(\"account\") { ColumnSet = new ColumnSet(\"name\") };"
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-059",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "QueryExpression condition",
+      "origin": "GAP",
+      "prompt": "Add a condition `statecode = 0` to a `QueryExpression`.",
+      "answer": "query.Criteria.AddCondition(\"statecode\", ConditionOperator.Equal, 0);",
+      "acceptedAnswers": [
+        "query.Criteria.AddCondition(\"statecode\", ConditionOperator.Equal, 0);"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-060",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "FetchExpression",
+      "origin": "DOC",
+      "prompt": "Which Organization service query type wraps FetchXML?",
+      "answer": "FetchExpression",
+      "explanation": "Uploaded material notes it is useful when FetchXML features such as aggregation are needed.",
+      "acceptedAnswers": [
+        "FetchExpression",
+        "FetchExpression()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-061",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "QueryByAttribute",
+      "origin": "GAP",
+      "prompt": "Which query class is the simple attribute/value equality query type?",
+      "answer": "QueryByAttribute",
+      "acceptedAnswers": [
+        "QueryByAttribute",
+        "QueryByAttribute()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-062",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "UpsertRequest",
+      "origin": "GAP",
+      "prompt": "Which message is designed for create-or-update synchronization scenarios?",
+      "answer": "UpsertRequest",
+      "explanation": "PL-400 currently lists alternate keys and `UpsertRequest` under data synchronization.",
+      "acceptedAnswers": [
+        "UpsertRequest",
+        "UpsertRequest()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-063",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "ExecuteMultipleRequest",
+      "origin": "GAP",
+      "prompt": "Does `ExecuteMultipleRequest` make all child requests one database transaction?",
+      "answer": "No. Each request is processed in a separate database transaction.",
+      "explanation": "It reduces round trips but is not atomic across the collection.",
+      "acceptedAnswers": [
+        "No. Each request is processed in a separate database transaction."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-064",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "ExecuteTransactionRequest",
+      "origin": "DOC",
+      "prompt": "Which request executes multiple SDK requests as one atomic transaction?",
+      "answer": "ExecuteTransactionRequest",
+      "explanation": "If one request fails, the transaction is rolled back.",
+      "acceptedAnswers": [
+        "ExecuteTransactionRequest",
+        "ExecuteTransactionRequest()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-065",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "Bulk messages",
+      "origin": "GAP",
+      "prompt": "Name the modern bulk message requests for create, update, and upsert operations.",
+      "answer": "CreateMultipleRequest`, `UpdateMultipleRequest`, `UpsertMultipleRequest",
+      "acceptedAnswers": [
+        "CreateMultipleRequest`, `UpdateMultipleRequest`, `UpsertMultipleRequest"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-066",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IServiceEndpointNotificationService",
+      "origin": "DOC",
+      "prompt": "Which interface is used by an Azure-aware Dataverse plug-in to post the execution context to a registered Azure service endpoint?",
+      "answer": "IServiceEndpointNotificationService",
+      "explanation": "The PL-400 study guide explicitly names this interface.",
+      "acceptedAnswers": [
+        "IServiceEndpointNotificationService",
+        "IServiceEndpointNotificationService()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-PLUGIN-067",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IServiceEndpointNotificationService",
+      "origin": "DOC",
+      "prompt": "How is the Azure service endpoint normally identified to the plug-in?",
+      "answer": "Create/register the service endpoint, then pass its ID as plug-in step configuration rather than hard-coding an environment-specific GUID.",
+      "acceptedAnswers": [
+        "Create/register the service endpoint, then pass its ID as plug-in step configuration rather than hard-coding an environment-specific GUID."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "DV-PLUGIN-068",
+      "category": "Dataverse — Plug-in interfaces, classes, context, and SDK syntax",
+      "topic": "IManagedIdentityService",
+      "origin": "DOC",
+      "prompt": "Which Dataverse plug-in service can acquire a token for outbound access to Azure resources using Power Platform managed identity?",
+      "answer": "IManagedIdentityService",
+      "acceptedAnswers": [
+        "IManagedIdentityService",
+        "IManagedIdentityService()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-001",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "Custom API binding",
+      "origin": "DOC",
+      "prompt": "A custom API is bound to a single Dataverse row. Which binding type should be selected?",
+      "answer": "`Entity` binding.",
+      "acceptedAnswers": [
+        "`Entity` binding."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-002",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "Custom API Target",
+      "origin": "DOC",
+      "prompt": "When a custom API uses `Entity` binding, which request parameter is automatically created and what type is it?",
+      "answer": "`Target` of type `EntityReference`.",
+      "acceptedAnswers": [
+        "`Target` of type `EntityReference`."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-003",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "Custom API global",
+      "origin": "DOC",
+      "prompt": "Which custom API binding is used when the operation is not associated with a specific table?",
+      "answer": "Global",
+      "acceptedAnswers": [
+        "Global",
+        "Global()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-004",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "Custom API EntityCollection",
+      "origin": "DOC",
+      "prompt": "Which custom API binding represents an operation associated with a collection/entity set?",
+      "answer": "EntityCollection",
+      "explanation": "The binding itself does not automatically hand you a collection parameter.",
+      "acceptedAnswers": [
+        "EntityCollection",
+        "EntityCollection()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-005",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "Custom API plug-in",
+      "origin": "DOC",
+      "prompt": "Where does pro-code business logic for a Dataverse custom API normally live?",
+      "answer": "In a registered plug-in type/assembly configured as the custom API plug-in type.",
+      "acceptedAnswers": [
+        "In a registered plug-in type/assembly configured as the custom API plug-in type."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-006",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "custom request parameters",
+      "origin": "GAP",
+      "prompt": "Inside the plug-in implementing a custom API, where are request parameter values read?",
+      "answer": "context.InputParameters",
+      "acceptedAnswers": [
+        "context.InputParameters",
+        "context.InputParameters()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-007",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "custom response properties",
+      "origin": "GAP",
+      "prompt": "Inside the plug-in implementing a custom API, where are response values written?",
+      "answer": "context.OutputParameters",
+      "acceptedAnswers": [
+        "context.OutputParameters",
+        "context.OutputParameters()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-008",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "OrganizationServiceContext",
+      "origin": "GAP",
+      "prompt": "Which SDK class provides a LINQ/tracking-style context over `IOrganizationService`?",
+      "answer": "OrganizationServiceContext",
+      "explanation": "Tracked changes are committed with `SaveChanges()`.",
+      "acceptedAnswers": [
+        "OrganizationServiceContext",
+        "OrganizationServiceContext()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-009",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "OrganizationServiceContext SaveChanges",
+      "origin": "GAP",
+      "prompt": "Which method commits tracked changes in an `OrganizationServiceContext`?",
+      "answer": "SaveChanges()",
+      "acceptedAnswers": [
+        "SaveChanges()",
+        "SaveChanges"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-010",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "CodeActivity",
+      "origin": "DOC",
+      "prompt": "Which .NET base class is used for a traditional custom workflow activity?",
+      "answer": "System.Activities.CodeActivity",
+      "explanation": "This is separate from an `IPlugin` implementation.",
+      "acceptedAnswers": [
+        "System.Activities.CodeActivity",
+        "System.Activities.CodeActivity()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-011",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "CodeActivityContext",
+      "origin": "DOC",
+      "prompt": "What context parameter is passed to a custom workflow activity `Execute` method?",
+      "answer": "CodeActivityContext",
+      "explanation": "This was a distractor in your plug-in questions; it belongs to workflow activities, not the IPlugin `Execute(IServiceProvider)` entry point.",
+      "acceptedAnswers": [
+        "CodeActivityContext",
+        "CodeActivityContext()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-012",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "IWorkflowContext",
+      "origin": "GAP",
+      "prompt": "Which Dataverse SDK interface contains workflow execution information for a custom workflow activity?",
+      "answer": "IWorkflowContext",
+      "acceptedAnswers": [
+        "IWorkflowContext",
+        "IWorkflowContext()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-013",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "OptionSetValue.Value",
+      "origin": "GAP",
+      "prompt": "How do you get the integer from an SDK `OptionSetValue choice`?",
+      "answer": "choice.Value",
+      "acceptedAnswers": [
+        "choice.Value",
+        "choice.Value()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-014",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "Money.Value",
+      "origin": "GAP",
+      "prompt": "How do you get the decimal amount from an SDK `Money money`?",
+      "answer": "money.Value",
+      "acceptedAnswers": [
+        "money.Value",
+        "money.Value()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "DV-SDK-015",
+      "category": "Dataverse SDK — custom APIs and supporting .NET types",
+      "topic": "AliasedValue",
+      "origin": "GAP",
+      "prompt": "Which SDK class commonly wraps values returned from FetchXML/QueryExpression aliases or aggregate/grouping queries?",
+      "answer": "AliasedValue",
+      "acceptedAnswers": [
+        "AliasedValue",
+        "AliasedValue()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-001",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "formContext",
+      "origin": "DOC",
+      "prompt": "In a modern model-driven app event handler, what is the syntax for getting the current form context from the event execution context?",
+      "answer": "const formContext = executionContext.getFormContext();",
+      "explanation": "`Xrm.Page` is deprecated; use the passed execution context and `getFormContext()`.",
+      "acceptedAnswers": [
+        "const formContext = executionContext.getFormContext();"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-002",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "Xrm.Page",
+      "origin": "DOC",
+      "prompt": "Which older global form object should new client scripting avoid in favor of `formContext`?",
+      "answer": "Xrm.Page",
+      "explanation": "It remains for backward compatibility but is deprecated for new code.",
+      "acceptedAnswers": [
+        "Xrm.Page",
+        "Xrm.Page()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-003",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "form type",
+      "origin": "DOC",
+      "prompt": "What Client API expression returns the current form type?",
+      "answer": "formContext.ui.getFormType()",
+      "acceptedAnswers": [
+        "formContext.ui.getFormType()",
+        "formContext.ui.getFormType"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-004",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "attribute value",
+      "origin": "GAP",
+      "prompt": "What is the common syntax to read a Dataverse column value on a model-driven form?",
+      "answer": "formContext.getAttribute('logicalname').getValue()",
+      "acceptedAnswers": [
+        "formContext.getAttribute('logicalname').getValue()",
+        "formContext.getAttribute('logicalname').getValue"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-005",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "attribute value",
+      "origin": "GAP",
+      "prompt": "What is the common syntax to set a Dataverse column value on a model-driven form?",
+      "answer": "formContext.getAttribute('logicalname').setValue(value)",
+      "acceptedAnswers": [
+        "formContext.getAttribute('logicalname').setValue(value)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-006",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "control visibility",
+      "origin": "GAP",
+      "prompt": "How do you hide a control named `creditlimit` using the Client API?",
+      "answer": "formContext.getControl('creditlimit').setVisible(false);",
+      "acceptedAnswers": [
+        "formContext.getControl('creditlimit').setVisible(false);"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-007",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "required level",
+      "origin": "GAP",
+      "prompt": "How do you make a form column required through the Client API?",
+      "answer": "formContext.getAttribute('logicalname').setRequiredLevel('required');",
+      "acceptedAnswers": [
+        "formContext.getAttribute('logicalname').setRequiredLevel('required');"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-008",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "event source",
+      "origin": "GAP",
+      "prompt": "Which execution-context method returns the control or attribute that caused the event?",
+      "answer": "executionContext.getEventSource()",
+      "acceptedAnswers": [
+        "executionContext.getEventSource()",
+        "executionContext.getEventSource"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-009",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "event args",
+      "origin": "GAP",
+      "prompt": "Which execution-context method gives access to event-specific arguments such as save-event information?",
+      "answer": "executionContext.getEventArgs()",
+      "acceptedAnswers": [
+        "executionContext.getEventArgs()",
+        "executionContext.getEventArgs"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-010",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "prevent save",
+      "origin": "GAP",
+      "prompt": "In an `OnSave` handler, what syntax cancels the save?",
+      "answer": "executionContext.getEventArgs().preventDefault();",
+      "acceptedAnswers": [
+        "executionContext.getEventArgs().preventDefault();"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-011",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "openErrorDialog",
+      "origin": "DOC",
+      "prompt": "Which Client API call shows an error dialog?",
+      "answer": "Xrm.Navigation.openErrorDialog(errorOptions)",
+      "acceptedAnswers": [
+        "Xrm.Navigation.openErrorDialog(errorOptions)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-012",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "openErrorDialog details",
+      "origin": "DOC",
+      "prompt": "You want the error dialog to include a **Download Log File** button containing `error.message`. What object shape should you pass?",
+      "answer": "{ message: 'There was an error during the request', details: error.message }",
+      "explanation": "The `details` property is what enables the downloadable log content.",
+      "acceptedAnswers": [
+        "{ message: 'There was an error during the request', details: error.message }"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-013",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "openAlertDialog",
+      "origin": "DOC",
+      "prompt": "Which Client API call shows a normal alert rather than the error dialog?",
+      "answer": "Xrm.Navigation.openAlertDialog(...)",
+      "acceptedAnswers": [
+        "Xrm.Navigation.openAlertDialog(...)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-014",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "navigateTo",
+      "origin": "DOC",
+      "prompt": "Which Client API method is used to navigate to a page or open a supported page in a dialog?",
+      "answer": "Xrm.Navigation.navigateTo(pageInput, navigationOptions)",
+      "acceptedAnswers": [
+        "Xrm.Navigation.navigateTo(pageInput, navigationOptions)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-015",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "navigateTo result",
+      "origin": "DOC",
+      "prompt": "When `navigateTo` opens a table form in create mode, where can the created row reference be returned when the dialog closes?",
+      "answer": "In the resolved result object, via `savedEntityReference`.",
+      "acceptedAnswers": [
+        "In the resolved result object, via `savedEntityReference`."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-016",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "Xrm.WebApi create",
+      "origin": "GAP",
+      "prompt": "What is the core syntax for creating a Dataverse row from model-driven client script?",
+      "answer": "Xrm.WebApi.createRecord(entityLogicalName, data)",
+      "acceptedAnswers": [
+        "Xrm.WebApi.createRecord(entityLogicalName, data)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-017",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "Xrm.WebApi retrieve",
+      "origin": "GAP",
+      "prompt": "What method retrieves one Dataverse row in model-driven client script?",
+      "answer": "Xrm.WebApi.retrieveRecord(entityLogicalName, id, options)",
+      "acceptedAnswers": [
+        "Xrm.WebApi.retrieveRecord(entityLogicalName, id, options)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-018",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "Xrm.WebApi retrieve multiple",
+      "origin": "DOC",
+      "prompt": "What method retrieves a collection of Dataverse rows in model-driven client script?",
+      "answer": "Xrm.WebApi.retrieveMultipleRecords(entityLogicalName, options, maxPageSize)",
+      "acceptedAnswers": [
+        "Xrm.WebApi.retrieveMultipleRecords(entityLogicalName, options, maxPageSize)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-019",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "Xrm.WebApi update",
+      "origin": "GAP",
+      "prompt": "What is the core syntax for updating a Dataverse row in model-driven client script?",
+      "answer": "Xrm.WebApi.updateRecord(entityLogicalName, id, data)",
+      "acceptedAnswers": [
+        "Xrm.WebApi.updateRecord(entityLogicalName, id, data)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-020",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "Xrm.WebApi delete",
+      "origin": "GAP",
+      "prompt": "What method deletes one Dataverse row in model-driven client script?",
+      "answer": "Xrm.WebApi.deleteRecord(entityLogicalName, id)",
+      "acceptedAnswers": [
+        "Xrm.WebApi.deleteRecord(entityLogicalName, id)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-021",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "Xrm.WebApi execute",
+      "origin": "GAP",
+      "prompt": "Which `Xrm.WebApi` member executes a single Web API action, function, or CRUD request object?",
+      "answer": "Xrm.WebApi.online.execute(request)",
+      "acceptedAnswers": [
+        "Xrm.WebApi.online.execute(request)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-022",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "Xrm.WebApi executeMultiple",
+      "origin": "GAP",
+      "prompt": "Which `Xrm.WebApi` member executes a collection of action, function, or CRUD requests?",
+      "answer": "Xrm.WebApi.online.executeMultiple(requests)",
+      "acceptedAnswers": [
+        "Xrm.WebApi.online.executeMultiple(requests)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-023",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "FetchXML",
+      "origin": "DOC",
+      "prompt": "Can JavaScript using the Dataverse Web API query with FetchXML?",
+      "answer": "Yes. FetchXML is supported as a Web API query option, including with `retrieveMultipleRecords`.",
+      "acceptedAnswers": [
+        "Yes. FetchXML is supported as a Web API query option, including with `retrieveMultipleRecords`."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "XRM-024",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "OData",
+      "origin": "DOC",
+      "prompt": "Which OData version is used by the modern Dataverse Web API?",
+      "answer": "OData v4.0.",
+      "acceptedAnswers": [
+        "OData v4.0."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "XRM-025",
+      "category": "Model-driven apps — Client API / Xrm syntax",
+      "topic": "duplicate detection",
+      "origin": "DOC",
+      "prompt": "For a Dataverse Web API `PATCH`, what value of `MSCRM.SuppressDuplicateDetection` enables duplicate detection?",
+      "answer": "false",
+      "explanation": "The name is inverted: false means do **not** suppress duplicate detection.",
+      "acceptedAnswers": [
+        "false",
+        "false()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-001",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "StandardControl",
+      "origin": "DOC",
+      "prompt": "Which interface is commonly implemented by a standard PCF component class?",
+      "answer": "ComponentFramework.StandardControl<IInputs, IOutputs>",
+      "acceptedAnswers": [
+        "ComponentFramework.StandardControl<IInputs, IOutputs>"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-002",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "lifecycle",
+      "origin": "DOC",
+      "prompt": "Name the four core `StandardControl` lifecycle methods you should recognize.",
+      "answer": "init`, `updateView`, `getOutputs`, `destroy",
+      "explanation": "`getOutputs` is optional; the others are required for a standard code component.",
+      "acceptedAnswers": [
+        "init`, `updateView`, `getOutputs`, `destroy"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-003",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "init signature",
+      "origin": "DOC",
+      "prompt": "What is the shape of the PCF `init` method signature?",
+      "answer": "init(context, notifyOutputChanged, state, container): void",
+      "acceptedAnswers": [
+        "init(context, notifyOutputChanged, state, container): void"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-004",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "init",
+      "origin": "DOC",
+      "prompt": "What is `init` for in a PCF component?",
+      "answer": "Initialize the component instance, register handlers, create UI, and perform initialization work.",
+      "explanation": "Dataset values should be handled in `updateView`, not initialized in `init`.",
+      "acceptedAnswers": [
+        "Initialize the component instance, register handlers, create UI, and perform initialization work."
+      ],
+      "gradeMode": "self"
+    },
+    {
+      "id": "PCF-005",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "notifyOutputChanged",
+      "origin": "DOC",
+      "prompt": "A user changes a value inside your PCF component. Which callback should your component invoke to tell the framework it has new output?",
+      "answer": "notifyOutputChanged()",
+      "explanation": "The callback is supplied to `init`.",
+      "acceptedAnswers": [
+        "notifyOutputChanged()",
+        "notifyOutputChanged"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-006",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "getOutputs",
+      "origin": "DOC",
+      "prompt": "After `notifyOutputChanged()` is called, which lifecycle method does the framework use to obtain the component’s changed bound values?",
+      "answer": "getOutputs()",
+      "acceptedAnswers": [
+        "getOutputs()",
+        "getOutputs"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-007",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "getOutputs syntax",
+      "origin": "GAP",
+      "prompt": "A manifest has a bound property named `value`. What should `getOutputs()` return if the current component value is `this._value`?",
+      "answer": "return { value: this._value };",
+      "acceptedAnswers": [
+        "return { value: this._value };"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-008",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "updateView",
+      "origin": "DOC",
+      "prompt": "Which PCF method is invoked when values in the property bag change?",
+      "answer": "updateView(context)",
+      "explanation": "Think host → component.",
+      "acceptedAnswers": [
+        "updateView(context)"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-009",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "direction",
+      "origin": "DOC",
+      "prompt": "Complete the direction rule: `updateView` is data ___ the component; `getOutputs` is data ___ the component.",
+      "answer": "`updateView`: into; `getOutputs`: out of.",
+      "acceptedAnswers": [
+        "`updateView`: into; `getOutputs`: out of."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-010",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "destroy",
+      "origin": "DOC",
+      "prompt": "Which PCF lifecycle method should remove event handlers and release component resources?",
+      "answer": "destroy()",
+      "acceptedAnswers": [
+        "destroy()",
+        "destroy"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-011",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "manifest",
+      "origin": "DOC",
+      "prompt": "What file defines a PCF component’s metadata, properties, resources, and capabilities?",
+      "answer": "ControlManifest.Input.xml",
+      "acceptedAnswers": [
+        "ControlManifest.Input.xml",
+        "ControlManifest.Input.xml()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-012",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "manifest property usage",
+      "origin": "DOC",
+      "prompt": "Which manifest property `usage` value allows the component to return a changed value to the host?",
+      "answer": "bound",
+      "acceptedAnswers": [
+        "bound",
+        "bound()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-013",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "manifest input property",
+      "origin": "GAP",
+      "prompt": "Which manifest property `usage` value is for a value supplied to the component but not written back?",
+      "answer": "input",
+      "acceptedAnswers": [
+        "input",
+        "input()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-014",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "generated types",
+      "origin": "DOC",
+      "prompt": "Which generated TypeScript interfaces normally represent manifest inputs and outputs?",
+      "answer": "`IInputs` and `IOutputs` from `generated/ManifestTypes`.",
+      "acceptedAnswers": [
+        "`IInputs` and `IOutputs` from `generated/ManifestTypes`."
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-015",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "context.webAPI",
+      "origin": "GAP",
+      "prompt": "Which PCF context feature exposes methods for creating, retrieving, updating, and deleting Dataverse rows in supported hosts?",
+      "answer": "context.webAPI",
+      "acceptedAnswers": [
+        "context.webAPI",
+        "context.webAPI()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-016",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "context.parameters",
+      "origin": "GAP",
+      "prompt": "How do you access a manifest property named `sampleProperty` from a PCF context?",
+      "answer": "context.parameters.sampleProperty",
+      "explanation": "For a field value you commonly read its `.raw` member.",
+      "acceptedAnswers": [
+        "context.parameters.sampleProperty",
+        "context.parameters.sampleProperty()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-017",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "raw value",
+      "origin": "GAP",
+      "prompt": "If `sampleProperty` is a bound/input field property, what member commonly contains its current raw value?",
+      "answer": "context.parameters.sampleProperty.raw",
+      "acceptedAnswers": [
+        "context.parameters.sampleProperty.raw",
+        "context.parameters.sampleProperty.raw()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-018",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "index.ts",
+      "origin": "DOC",
+      "prompt": "Which TypeScript file normally contains the PCF component class and lifecycle method implementations?",
+      "answer": "index.ts",
+      "acceptedAnswers": [
+        "index.ts",
+        "index.ts()"
+      ],
+      "gradeMode": "exact"
+    },
+    {
+      "id": "PCF-019",
+      "category": "PCF — interfaces and lifecycle syntax",
+      "topic": "resources",
+      "origin": "GAP",
+      "prompt": "Name three resource types, besides the TypeScript code resource, that a PCF manifest can include.\n\n---",
+      "answer": "CSS, image resources, and `.resx` localization resources.",
+      "acceptedAnswers": [
+        "CSS, image resources, and `.resx` localization resources."
+      ],
+      "gradeMode": "exact"
+    }
+  ]
+}
