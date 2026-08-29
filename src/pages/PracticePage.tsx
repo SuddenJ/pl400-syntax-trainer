@@ -141,8 +141,8 @@ export function PracticePage() {
     return <SessionSetup onStart={startSession} defaultSize={settings.defaultSessionSize} />
   }
 
-  const preferReveal =
-    settings.practicePreference === 'reveal' || currentQuestion.gradeMode === 'self'
+  // Always show the typing box. Self-grade / conceptual questions still use
+  // Reveal + self-rating after Check/Reveal; never hide the input mid-session.
 
   return (
     <div>
@@ -178,55 +178,26 @@ export function PracticePage() {
 
       {phase === 'prompt' ? (
         <div className="space-y-3">
-          {!preferReveal || settings.practicePreference === 'typing' ? (
-            <>
-              <label htmlFor="answer" className="sr-only">
-                Your answer
-              </label>
-              <SyntaxAutocompleteInput
-                id="answer"
-                value={draftAnswer}
-                onChange={setDraftAnswer}
-                rows={4}
-                placeholder="Type the syntax…"
-                aria-label="Your answer"
-              />
-              <div className="grid grid-cols-2 gap-2">
-                <PrimaryButton onClick={submitTyped}>Check</PrimaryButton>
-                <SecondaryButton onClick={reveal}>Reveal</SecondaryButton>
-              </div>
-            </>
-          ) : (
-            <div className="grid gap-2">
-              <PrimaryButton onClick={reveal}>Reveal answer</PrimaryButton>
-              <div className="grid grid-cols-3 gap-2">
-                <SecondaryButton
-                  onClick={() => {
-                    reveal()
-                    selfGrade('correct')
-                  }}
-                >
-                  I knew it
-                </SecondaryButton>
-                <SecondaryButton
-                  onClick={() => {
-                    reveal()
-                    selfGrade('unsure')
-                  }}
-                >
-                  Unsure
-                </SecondaryButton>
-                <SecondaryButton
-                  onClick={() => {
-                    reveal()
-                    selfGrade('incorrect')
-                  }}
-                >
-                  Wrong
-                </SecondaryButton>
-              </div>
-            </div>
-          )}
+          <label htmlFor="answer" className="sr-only">
+            Your answer
+          </label>
+          <SyntaxAutocompleteInput
+            id="answer"
+            value={draftAnswer}
+            onChange={setDraftAnswer}
+            rows={4}
+            placeholder="Type the syntax…"
+            aria-label="Your answer"
+          />
+          <div className="grid grid-cols-2 gap-2">
+            <PrimaryButton onClick={submitTyped}>Check</PrimaryButton>
+            <SecondaryButton onClick={reveal}>Reveal</SecondaryButton>
+          </div>
+          {currentQuestion.gradeMode === 'self' ? (
+            <p className="text-xs text-slate-500">
+              This one is self-graded — type what you recall, then Check or Reveal.
+            </p>
+          ) : null}
         </div>
       ) : (
         <div className="space-y-3">
